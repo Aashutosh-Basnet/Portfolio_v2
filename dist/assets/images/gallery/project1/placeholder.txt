@@ -1,0 +1,6 @@
+This is a placeholder file. Please replace it with actual image files named image1.jpg, image2.jpg, etc.
+
+For best results:
+- Use consistent image sizes (1200x800px or 4:3 aspect ratio recommended)
+- Optimize images for web (compress them to reduce file size)
+- Use high-quality project screenshots or photos 
