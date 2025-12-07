@@ -26,26 +26,43 @@ const Navbar = () => {
   ];
 
   useEffect(() => {
-    const lastScrollY = lastScrollYRef.current;
+    // Current scroll position
+    const currentY = currentScrollY;
+    const lastY = lastScrollYRef.current;
 
-    if (currentScrollY === 0) {
+    // Add a threshold (e.g., 10px) to prevent flickering on small movements
+    const scrollDelta = currentY - lastY;
+
+    if (currentY === 0) {
       setIsNavVisible(true);
       navContainerRef.current?.classList.remove("floating-nav");
-    } else if (currentScrollY > lastScrollY) {
+    } else if (scrollDelta > 0 && currentY > 50) {
+      // Scrolling DOWN and not at the very top
       setIsNavVisible(false);
       navContainerRef.current?.classList.add("floating-nav");
-    } else if (currentScrollY < lastScrollY) {
+    } else if (scrollDelta < 0) {
+      // Scrolling UP
       setIsNavVisible(true);
       navContainerRef.current?.classList.add("floating-nav");
     }
-    lastScrollYRef.current = currentScrollY;
+
+    lastScrollYRef.current = currentY;
   }, [currentScrollY]);
 
   useEffect(() => {
+    if (pathname === "/project") {
+      setActiveSection("project");
+    } else if (pathname === "/" && activeSection === "project") {
+      setActiveSection("home");
+    }
+  }, [pathname, activeSection]);
+
+  useEffect(() => {
     gsap.to(navContainerRef.current, {
-      y: isNavVisible ? 0 : -100,
+      yPercent: isNavVisible ? 0 : -100, // Use yPercent for better responsiveness
       opacity: isNavVisible ? 1 : 0,
       duration: 0.3,
+      ease: "power2.inOut", // Add easing for smoothness
     });
   }, [isNavVisible]);
 
@@ -76,9 +93,9 @@ const Navbar = () => {
   return (
     <div
       ref={navContainerRef}
-      className="fixed inset-x-0 top-0 z-50 h-20 border-none transition-all duration-700 bg-black/90 backdrop-blur-sm"
+      className="fixed inset-x-0 top-0 z-50 h-16 border-none bg-white/90 backdrop-blur-sm flex items-center justify-center transition-none"
     >
-      <header className="relative top-1/2 w-full -translate-y-1/2 rounded-lg bg-transparent shadow-sm">
+      <header className="w-full rounded-lg bg-transparent shadow-sm">
         <nav className="flex size-full items-center justify-between px-6 py-4">
           <Link
             href={"/"}
@@ -97,15 +114,13 @@ const Navbar = () => {
                   e.preventDefault();
                   handleNavClick(item.path, item.isRoute);
                 }}
-                className={`relative text-sm group ${
-                  activeSection === item.path ? "text-white" : "text-gray-400"
-                }`}
+                className={`relative text-sm group ${activeSection === item.path ? "text-black" : "text-gray-500"
+                  }`}
               >
                 {item.title}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500 transition-all duration-300 ${
-                    activeSection === item.path ? "w-full" : "w-0"
-                  } group-hover:w-full`}
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500 transition-all duration-300 ${activeSection === item.path ? "w-full" : "w-0"
+                    } group-hover:w-full`}
                 />
               </a>
             ))}
@@ -113,17 +128,17 @@ const Navbar = () => {
 
           <button
             onClick={toggleMenu}
-            className="md:hidden text-gray-400 hover:text-white transition-colors duration-200"
+            className="md:hidden text-gray-500 hover:text-black transition-colors duration-200"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </nav>
 
+        {/* Mobile Menu */}
         <div
-          className={`md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-md transition-all duration-300 overflow-hidden ${
-            isMenuOpen ? "max-h-64 border-t border-white/10" : "max-h-0"
-          }`}
+          className={`md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md transition-all duration-300 overflow-hidden shadow-lg ${isMenuOpen ? "max-h-64" : "max-h-0"
+            }`}
         >
           <div className="px-6 py-4 flex flex-col space-y-4">
             {navItems.map((item) => (
@@ -134,15 +149,13 @@ const Navbar = () => {
                   e.preventDefault();
                   handleNavClick(item.path, item.isRoute);
                 }}
-                className={`relative w-fit text-sm group ${
-                  activeSection === item.path ? "text-white" : "text-gray-400"
-                }`}
+                className={`relative w-fit text-sm group ${activeSection === item.path ? "text-black" : "text-gray-500"
+                  }`}
               >
                 {item.title}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500 transition-all duration-300 ${
-                    activeSection === item.path ? "w-full" : "w-0"
-                  } group-hover:w-full`}
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-600 to-pink-500 transition-all duration-300 ${activeSection === item.path ? "w-full" : "w-0"
+                    } group-hover:w-full`}
                 />
               </a>
             ))}

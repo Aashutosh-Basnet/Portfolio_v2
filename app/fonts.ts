@@ -1,5 +1,7 @@
-import {DM_Serif_Text} from "next/font/google";
+import { DM_Serif_Text } from "next/font/google";
 import { Raleway, Anaheim } from "next/font/google";
+import { Montserrat } from "next/font/google";
+import { Outfit } from "next/font/google";
 
 export const dmSerifText = DM_Serif_Text({
   weight: ["400"],
@@ -15,3 +17,15 @@ export const anaheim = Anaheim({
   weight: ["400"],
   subsets: ["latin"],
 });
+
+export const montserrat = Montserrat({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-montserrat",
+})
+
+export const outfit = Outfit({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-outfit",
+})

@@ -1,16 +1,17 @@
 import React from 'react';
-import { Github, Linkedin, Mails, PhoneCall  } from 'lucide-react';
+import { Github, Linkedin, Mails, PhoneCall } from 'lucide-react';
+import RevealWrapper from './ui/RevealWrapper';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="relative py-20 bg-black">
+    <section id="contact" className="relative py-20 bg-white">
       <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto bg-[#0A0A0A] rounded-3xl overflow-hidden">
+        <RevealWrapper className="max-w-6xl mx-auto bg-[#0A0A0A] rounded-3xl overflow-hidden" direction="up">
           <div className="relative py-5 overflow-hidden">
             {/* Background gradient and light effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-red-500/90 to-green-800/90"></div>
             <div className="absolute top-1/2 -translate-y-1/2 right-[5%] w-64 h-64 bg-black/20 blur-3xl rounded-full"></div>
-            
+
             <div className="container mx-auto px-6 relative">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -28,9 +29,9 @@ const Contact: React.FC = () => {
                     Connect With Me
                   </h3>
                   <div className="space-y-4">
-                    <a 
-                      href="https://github.com/Aashutosh-Basnet" 
-                      target="_blank" 
+                    <a
+                      href="https://github.com/Aashutosh-Basnet"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-4 p-4 bg-gray-800/5 hover:bg-white/10 rounded-lg transition-colors duration-300 group"
                     >
@@ -43,9 +44,9 @@ const Contact: React.FC = () => {
                       </div>
                     </a>
 
-                    <a 
-                      href="" 
-                      target="_blank" 
+                    <a
+                      href=""
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-4 p-4 bg-gray-800/5 hover:bg-white/10 rounded-lg transition-colors duration-300 group"
                     >
@@ -58,7 +59,7 @@ const Contact: React.FC = () => {
                       </div>
                     </a>
 
-                    <div 
+                    <div
                       className="flex items-start gap-4 p-4 bg-gray-800/5 hover:bg-white/10 rounded-lg transition-colors duration-300 group"
                     >
                       <div className="p-2 bg-gray-800/10 rounded-full group-hover:bg-white/10 transition-colors duration-300">
@@ -70,7 +71,7 @@ const Contact: React.FC = () => {
                       </div>
                     </div>
 
-                    <div 
+                    <div
                       className="flex items-center gap-4 p-4 bg-gray-800/5 hover:bg-white/10 rounded-lg transition-colors duration-300 group"
                     >
                       <div className="p-2 bg-gray-800/10 rounded-full group-hover:bg-white/10 transition-colors duration-300">
@@ -86,7 +87,7 @@ const Contact: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </RevealWrapper>
       </div>
     </section>
   );

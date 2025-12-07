@@ -80,6 +80,9 @@ export const BentoCard: React.FC<BentoCardProps> = ({
 
   const isVideo = src.endsWith(".mp4") || src.includes("video");
 
+  const href = projectId ? `/project/${projectId}` : githubUrl ?? "#";
+  const isExternal = !projectId && !!githubUrl; // only external when no projectId
+
   return (
     <div className="relative size-full overflow-hidden rounded-lg bg-gray-700">
       {/* Media */}
@@ -130,9 +133,8 @@ export const BentoCard: React.FC<BentoCardProps> = ({
         {/* Button */}
         <div className="mt-4 flex justify-end">
           <Link
-            href={projectId ? `/project/${projectId}` : githubUrl ?? "#"}
-            target={githubUrl ? "_blank" : undefined}
-            rel={githubUrl ? "noreferrer" : undefined}
+            href={href}
+            {...(isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
           >
             <div
               ref={hoverButtonRef}

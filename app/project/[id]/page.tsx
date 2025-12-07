@@ -6,12 +6,10 @@ import Image from "next/image";
 import {
   ArrowLeft,
   Github,
-  ExternalLink,
   Layers,
   Code2,
   LayoutGrid,
   Calendar,
-  Globe,
   CheckCircle2,
   Copy,
 } from "lucide-react";
@@ -32,7 +30,7 @@ interface Project {
   features: string[];
 }
 
-// --- Mock Data ---
+// --- Mock Data (Same as before) ---
 const projects: Project[] = [
   {
     id: "skillswap",
@@ -87,44 +85,44 @@ npm run dev
 `,
   },
   {
-  id: "dockfresh",
-  title: "DockFresh",
-  tagline: "Fresh Seafood E-Commerce Platform",
-  role: "Full Stack Developer",
-  timeline: "Jan 2024 - Mar 2024",
-  description:
-    "DockFresh is a specialized fish and seafood e-commerce platform that connects local fisheries with end customers. Built with a NestJS backend and an integrated admin dashboard, it streamlines order management, real-time inventory tracking, and delivery logistics while ensuring product freshness through clear sourcing and cold-chain visibility.",
-  features: [
-    "Role-based admin dashboard for vendors, admins, and delivery partners",
-    "Real-time inventory & pricing management for seafood products",
-    "Order lifecycle tracking (placed → packed → shipped → delivered)",
-    "Secure JWT-based authentication & refresh token rotation",
-    "Advanced product search with filters (species, cut type, freshness, price)",
-    "Coupon & seasonal promotion management from the admin panel",
-    "Sales analytics with charts for revenue, orders, and top-selling products",
-    "Image and media management for product galleries",
-  ],
-  technologies: [
-    "NestJS",
-    "TypeScript",
-    "PostgreSQL",
-    "TypeORM",
-    "Redis",
-    "React",
-    "Next.js",
-    "Tailwind CSS",
-    "Chart.js",
-    "JWT",
-    "Docker",
-  ],
-  liveUrl: "https://dockfresh.example.com",
-  githubUrl: "https://github.com/example/dockfresh",
-  images: [
-    "/images/projects/dockfresh-1.png",
-    "/images/projects/dockfresh-2.png",
-    "/images/projects/dockfresh-3.png",
-  ],
-  readme: `# DockFresh - Architecture Overview
+    id: "dockfresh",
+    title: "DockFresh",
+    tagline: "Fresh Seafood E-Commerce Platform",
+    role: "Full Stack Developer",
+    timeline: "Jan 2024 - Mar 2024",
+    description:
+      "DockFresh is a specialized fish and seafood e-commerce platform that connects local fisheries with end customers. Built with a NestJS backend and an integrated admin dashboard, it streamlines order management, real-time inventory tracking, and delivery logistics while ensuring product freshness through clear sourcing and cold-chain visibility.",
+    features: [
+      "Role-based admin dashboard for vendors, admins, and delivery partners",
+      "Real-time inventory & pricing management for seafood products",
+      "Order lifecycle tracking (placed → packed → shipped → delivered)",
+      "Secure JWT-based authentication & refresh token rotation",
+      "Advanced product search with filters (species, cut type, freshness, price)",
+      "Coupon & seasonal promotion management from the admin panel",
+      "Sales analytics with charts for revenue, orders, and top-selling products",
+      "Image and media management for product galleries",
+    ],
+    technologies: [
+      "NestJS",
+      "TypeScript",
+      "PostgreSQL",
+      "TypeORM",
+      "Redis",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Chart.js",
+      "JWT",
+      "Docker",
+    ],
+    liveUrl: "https://dockfresh.example.com",
+    githubUrl: "https://github.com/example/dockfresh",
+    images: [
+      "/images/projects/dockfresh-1.png",
+      "/images/projects/dockfresh-2.png",
+      "/images/projects/dockfresh-3.png",
+    ],
+    readme: `# DockFresh - Architecture Overview
 
 DockFresh is a fish & seafood e-commerce platform built with a NestJS backend and a React/Next.js frontend. 
 It includes a feature-rich admin dashboard for managing products, orders, users, and promotions.
@@ -245,7 +243,132 @@ REDIS_URL=redis://localhost:6379
 
 DockFresh is designed to be production-ready with clear separation between backend services and the admin-facing UI, enabling smooth management of a seafood e-commerce business.
 `,
-}
+  },
+  {
+    id: "rag",
+    title: "ContextCanva",
+    tagline: "RAG-powered Document-Aware Chat Interface",
+    role: "Full Stack Developer",
+    timeline: "Apr 2024 - Jun 2024",
+    description:
+      "ContextCanva is a Retrieval-Augmented Generation (RAG) powered document chat platform that lets users converse with their own PDFs, DOCX, and markdown files. It combines a polished Next.js + Tailwind front-end with a FastAPI-based backend, delivering streaming-style chat, per-session isolation, and grounded answers backed by vector search over ingested documents. The system is designed for researchers, teams, and knowledge workers who need fast, reliable, and explainable responses tied to their source material.",
+    features: [
+      "Polished Next.js + Tailwind document-chat UI with session management and responsive streaming-style chat states",
+      "Dual-file upload with metadata visibility and per-session document context panels",
+      "Real-time chat history with robust error surfacing and loading/empty states",
+      "Document-filter controls to constrain retrieval to specific uploaded files",
+      "FastAPI endpoints for document upload and chat querying with per-session data isolation and request-level file limits",
+      "LangChain-based ingestion pipeline to parse PDF/DOCX/MD, chunk text, and persist embeddings in Chroma",
+      "Grounded RAG responses powered by HuggingFace embeddings and Groq LLMs"
+    ],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "FastAPI",
+      "Python",
+      "LangChain",
+      "ChromaDB",
+      "HuggingFace Embeddings",
+      "Groq LLMs",
+      "Docker"
+    ],
+    liveUrl: "https://contextcanva.example.com",
+    githubUrl: "https://github.com/example/contextcanva",
+    images: [
+      "/images/projects/contextcanva-1.png",
+      "/images/projects/contextcanva-2.png",
+      "/images/projects/contextcanva-3.png",
+    ],
+    readme: `# ContextCanva - RAG Architecture Overview
+
+## Overview
+ContextCanva is a Retrieval-Augmented Generation (RAG) platform that enables users to upload documents (PDF, DOCX, MD) and query them via a chat-style interface. The app delivers grounded answers using vector search over chunked document embeddings and Groq-hosted LLMs.
+
+## System Design
+
+### Frontend (Next.js + Tailwind)
+- **Document Chat Interface**
+  - Streaming-style chat UI with typing indicators and incremental message updates.
+  - Session management to isolate conversations and associated document sets.
+  - Dual-file upload with:
+    - Inline metadata visibility (file name, size, type, upload time).
+    - Per-session document list and active-context indicators.
+
+- **UX Enhancements**
+  - Real-time chat history rendering.
+  - Clear error surfacing for upload, retrieval, and LLM failures.
+  - Document filter controls allowing users to:
+    - Query all uploaded docs in a session, or
+    - Restrict retrieval to specific selected files.
+
+### Backend (FastAPI)
+- **API Endpoints**
+  - \`POST /upload\`:
+    - Accepts multiple files with per-request file limits.
+    - Enforces per-session data isolation via session IDs.
+  - \`POST /chat\`:
+    - Accepts a query, session ID, and optional document filters.
+    - Orchestrates retrieval + generation pipeline and returns grounded responses.
+
+- **Security & Isolation**
+  - Session-scoped document stores so data from one user/session is never mixed with another.
+  - Validation of file types and sizes at request level.
+
+### Ingestion & RAG Pipeline (LangChain + Chroma)
+- **Ingestion Flow**
+  - Parse documents in PDF, DOCX, and Markdown formats.
+  - Chunk text using LangChain text splitters tuned for semantically coherent segments.
+  - Generate embeddings with HuggingFace embedding models.
+  - Persist vectors and metadata into ChromaDB, keyed by session and document IDs.
+
+- **Retrieval & Generation**
+  - Top-k similarity search over ChromaDB constrained by:
+    - Session ID
+    - Optional document filters
+  - Response construction:
+    - Pass retrieved context chunks to Groq LLMs for answer generation.
+    - Optionally return source snippets/metadata to the frontend for transparency.
+
+## Tech Stack
+
+- **Frontend**: Next.js, TypeScript, Tailwind
+- **Backend**: FastAPI (Python)
+- **RAG & Vector Store**: LangChain, ChromaDB
+- **ML**: HuggingFace Embeddings, Groq LLMs
+- **Infra**: Docker (containerized services)
+
+## Getting Started
+
+\`\`\`bash
+# Clone the repository
+git clone https://github.com/example/contextcanva.git
+cd contextcanva
+
+# Backend setup
+cd backend
+python -m venv .venv
+source .venv/bin/activate  # or .venv\\Scripts\\activate on Windows
+pip install -r requirements.txt
+
+# Start FastAPI server
+uvicorn app.main:app --reload
+
+# Frontend setup
+cd ../frontend
+npm install
+npm run dev
+\`\`\`
+
+Configure your environment variables for:
+- ChromaDB connection
+- HuggingFace embedding model
+- Groq API keys
+
+Once both servers are running, open the frontend in your browser to start chatting with your documents.
+`
+  }
+
 
 ];
 
@@ -260,31 +383,31 @@ export default function ProjectDetail() {
   if (!project) return null; // Handle loading/error states in real app
 
   return (
-    <div className="mt-16 min-h-screen bg-black text-zinc-200 selection:bg-white/20 font-sans">
+    <div className="mt-16 min-h-screen bg-gray-50 text-gray-700 selection:bg-gray-200 font-sans">
       {/* Navigation Bar */}
-      <nav className="sticky top-0 z-50 border-b border-zinc-800 bg-black backdrop-blur-md">
+      <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors group"
+            className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>Back to Portfolio</span>
           </button>
-          <div className="text-sm font-medium text-zinc-500">
-            Projects / <span className="text-zinc-100">{project.title}</span>
+          <div className="text-sm font-medium text-gray-400">
+            Projects / <span className="text-gray-800">{project.title}</span>
           </div>
         </div>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-6 pt-6">
+      <main className="max-w-7xl mx-auto px-6 pt-6 pb-20">
         {/* Header Section */}
         <header className="space-y-6">
           <div className="space-y-2">
-            <h1 className="text-3xl md:text-3xl font-bold tracking-tight text-white">
+            <h1 className="text-3xl md:text-3xl font-bold tracking-tight text-gray-900">
               {project.title}
             </h1>
-            <p className="text-sm text-zinc-400 max-w-2xl font-light">
+            <p className="text-sm text-gray-500 max-w-2xl font-light">
               {project.tagline}
             </p>
           </div>
@@ -296,7 +419,7 @@ export default function ProjectDetail() {
                 href={project.githubUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 bg-zinc-900 border border-zinc-800 text-white rounded-full text-sm font-medium hover:bg-zinc-800 transition-colors"
+                className="flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-200 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-100 hover:border-gray-300 transition-all shadow-sm"
               >
                 <Github size={16} />
                 View Source
@@ -305,47 +428,47 @@ export default function ProjectDetail() {
           </div>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-8">
           {/* LEFT COLUMN: Main Content (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
             {/* Custom Tab Switcher */}
-            <div className="flex border-b border-zinc-800">
-              <TabButton 
-                active={activeTab === "overview"} 
-                onClick={() => setActiveTab("overview")} 
-                icon={<Layers size={16} />} 
-                label="Overview" 
+            <div className="flex border-b border-gray-200">
+              <TabButton
+                active={activeTab === "overview"}
+                onClick={() => setActiveTab("overview")}
+                icon={<Layers size={16} />}
+                label="Overview"
               />
-              <TabButton 
-                active={activeTab === "gallery"} 
-                onClick={() => setActiveTab("gallery")} 
-                icon={<LayoutGrid size={16} />} 
-                label="Gallery" 
+              <TabButton
+                active={activeTab === "gallery"}
+                onClick={() => setActiveTab("gallery")}
+                icon={<LayoutGrid size={16} />}
+                label="Gallery"
               />
-              <TabButton 
-                active={activeTab === "docs"} 
-                onClick={() => setActiveTab("docs")} 
-                icon={<Code2 size={16} />} 
-                label="Readme.md" 
+              <TabButton
+                active={activeTab === "docs"}
+                onClick={() => setActiveTab("docs")}
+                icon={<Code2 size={16} />}
+                label="Readme.md"
               />
             </div>
 
             {/* TAB CONTENT */}
-            <div className="min-h-[400px]">
+            <div className="min-h-[400px] pt-6">
               {activeTab === "overview" && (
                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                  <div className="prose prose-invert prose-zinc max-w-none">
-                    <h3 className="text-lg font-medium text-white mb-3">The Challenge</h3>
-                    <p className="text-zinc-400 leading-relaxed">{project.description}</p>
+                  <div className="prose prose-gray max-w-none">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">The Challenge</h3>
+                    <p className="text-gray-600 leading-relaxed">{project.description}</p>
                   </div>
-                  
+
                   <div>
-                    <h3 className="text-lg font-medium text-white mb-4">Key Technical Features</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Technical Features</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {project.features.map((feature, i) => (
-                        <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50">
+                        <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
                           <CheckCircle2 size={20} className="text-emerald-500 mt-0.5 shrink-0" />
-                          <span className="text-sm text-zinc-300">{feature}</span>
+                          <span className="text-sm text-gray-600">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -356,7 +479,7 @@ export default function ProjectDetail() {
               {activeTab === "gallery" && (
                 <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                   {/* Main Preview */}
-                  <div className="relative aspect-video w-full bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 shadow-2xl">
+                  <div className="relative aspect-video w-full bg-gray-100 rounded-xl overflow-hidden border border-gray-200 shadow-lg">
                     <Image
                       src={project.images[currentImageIndex]}
                       alt="Project Preview"
@@ -365,14 +488,13 @@ export default function ProjectDetail() {
                     />
                   </div>
                   {/* Thumbnails */}
-                  <div className="flex gap-4 overflow-x-auto pb-2">
+                  <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-300">
                     {project.images.map((img, idx) => (
                       <button
                         key={idx}
                         onClick={() => setCurrentImageIndex(idx)}
-                        className={`relative w-32 aspect-video rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 ${
-                          currentImageIndex === idx ? "border-white" : "border-transparent opacity-50 hover:opacity-100"
-                        }`}
+                        className={`relative w-32 aspect-video rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 shadow-sm ${currentImageIndex === idx ? "border-gray-900 ring-2 ring-gray-900/10" : "border-transparent opacity-60 hover:opacity-100"
+                          }`}
                       >
                         <Image src={img} alt={`Thumbnail ${idx}`} fill className="object-cover" />
                       </button>
@@ -383,18 +505,18 @@ export default function ProjectDetail() {
 
               {activeTab === "docs" && (
                 <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                  <div className="rounded-xl border border-zinc-800 bg-zinc-950 overflow-hidden">
-                    <div className="flex items-center justify-between px-4 py-3 border-b border-zinc-800 bg-zinc-900/30">
+                  <div className="rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+                    <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-gray-50">
                       <div className="flex gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
-                        <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
-                        <div className="w-3 h-3 rounded-full bg-emerald-500/20 border border-emerald-500/50"></div>
+                        <div className="w-3 h-3 rounded-full bg-red-400 border border-red-500/20"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-400 border border-yellow-500/20"></div>
+                        <div className="w-3 h-3 rounded-full bg-emerald-400 border border-emerald-500/20"></div>
                       </div>
-                      <span className="text-xs text-zinc-500 font-mono">README.md</span>
-                      <Copy size={14} className="text-zinc-500" />
+                      <span className="text-xs text-gray-500 font-mono font-medium">README.md</span>
+                      <Copy size={14} className="text-gray-400 hover:text-gray-600 cursor-pointer" />
                     </div>
-                    <div className="p-6 max-w-50vw">
-                      <pre className="font-mono text-sm leading-relaxed text-zinc-300 whitespace-pre-wrap break-words">
+                    <div className="p-8 max-w-50vw overflow-x-auto">
+                      <pre className="font-mono text-sm leading-relaxed text-gray-800 whitespace-pre-wrap break-words">
                         {project.readme}
                       </pre>
                     </div>
@@ -405,51 +527,51 @@ export default function ProjectDetail() {
           </div>
 
           {/* RIGHT COLUMN: Sidebar (4 cols) */}
-          <aside className="lg:col-span-4 space-y-8 lg:pl-8 lg:border-l lg:border-zinc-800">
-            
+          <aside className="lg:col-span-4 space-y-8 lg:pl-8 lg:border-l lg:border-gray-200">
+
             {/* Project Details Card */}
             <div className="space-y-6">
               <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
                   Project Details
                 </h4>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-sm text-zinc-300">
-                    <div className="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center border border-zinc-800 text-zinc-500">
+                  <div className="flex items-center gap-3 text-sm text-gray-700">
+                    <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center border border-gray-200 text-gray-500 shadow-sm">
                       <Calendar size={16} />
                     </div>
                     <div>
-                      <p className="text-xs text-zinc-500">Timeline</p>
-                      <p>{project.timeline}</p>
+                      <p className="text-xs text-gray-400 font-medium">Timeline</p>
+                      <p className="font-medium">{project.timeline}</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="h-px bg-zinc-800" />
+              <div className="h-px bg-gray-200" />
 
               {/* Tech Stack */}
               <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-4">
                   Tech Stack
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 text-xs font-medium text-zinc-300 bg-zinc-900 border border-zinc-800 rounded-md hover:border-zinc-600 transition-colors cursor-default"
+                      className="px-3 py-1.5 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-md hover:border-gray-300 hover:shadow-sm transition-all cursor-default"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-              
-              <div className="h-px bg-zinc-800" />
 
-              <div className="p-4 rounded-xl bg-blue-950/20 border border-blue-900/30">
-                <h4 className="text-sm font-medium text-blue-200 mb-2">Professional Outcome</h4>
-                <p className="text-xs text-blue-300/80 leading-relaxed">
+              <div className="h-px bg-gray-200" />
+
+              <div className="p-4 rounded-xl bg-blue-50 border border-blue-100">
+                <h4 className="text-sm font-semibold text-blue-900 mb-2">Professional Outcome</h4>
+                <p className="text-xs text-blue-800/80 leading-relaxed">
                   This project decreased user onboarding time by 40% and was deployed to handle 500+ concurrent connections during initial beta testing.
                 </p>
               </div>
@@ -467,10 +589,10 @@ function TabButton({ active, onClick, icon, label }: { active: boolean, onClick:
     <button
       onClick={onClick}
       className={`
-        flex items-center gap-2 px-6 py-4 text-sm font-medium transition-all border-b-2
-        ${active 
-          ? "border-white text-white" 
-          : "border-transparent text-zinc-500 hover:text-zinc-300 hover:border-zinc-700"}
+        flex items-center gap-2 px-6 py-4 text-sm font-medium transition-all border-b-2 relative top-[1px]
+        ${active
+          ? "border-gray-900 text-gray-900"
+          : "border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300"}
       `}
     >
       {icon}

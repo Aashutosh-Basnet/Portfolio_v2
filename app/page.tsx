@@ -27,7 +27,9 @@ const Page = () => {
   return (
     <div className="scroll-smooth pt-20">
       <Navbar />
-      <Hero />
+      <div id="home">
+        <Hero />
+      </div>
       <div id="about" ref={aboutRef}>
         <About />
       </div>

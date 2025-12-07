@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #000000, #2d066f);
+  background: linear-gradient(135deg, #f0f9ff, #e0e7ff);
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -15,7 +15,7 @@
 }
 
 .dark .card-stack-section {
-  background: linear-gradient(135deg, #000000, #2d066f);
+  background: linear-gradient(135deg, #f0f9ff, #e0e7ff);
 }
 
 .section-description {
@@ -80,7 +80,8 @@
   height: 400px;
   margin: 0 auto;
   perspective: 1000px;
-  padding: 0 20px; /* Add some padding for mobile */
+  padding: 0 20px;
+  /* Add some padding for mobile */
   z-index: 1;
   transform: translateZ(0);
   transform-style: preserve-3d;
@@ -202,4 +203,4 @@
     -webkit-background-clip: text;
     background-clip: text;
   }
-} 
+}

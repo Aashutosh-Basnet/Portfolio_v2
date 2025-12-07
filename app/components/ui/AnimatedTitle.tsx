@@ -57,7 +57,7 @@ const AnimatedTitle = ({ title, containerClass }: AnimatedTitleProps) => {
           {line.split(" ").map((word, idx) => (
             <span
               key={idx}
-              className="animated-word text-4xl font-black uppercase leading-[0.8] tracking-tighter text-white opacity-0 md:text-2xl"
+              className="animated-word text-4xl font-black uppercase leading-[0.8]   text-black opacity-0 md:text-4xl"
               // Adding HTML allow allows for special characters like &copy; inside words
               dangerouslySetInnerHTML={{ __html: word }}
             />

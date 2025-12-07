@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import RevealWrapper from "./ui/RevealWrapper";
 
 const About = () => {
   const [selectedExperience, setSelectedExperience] = useState("SHAILUNG");
@@ -30,9 +31,9 @@ const About = () => {
   };
 
   return (
-    <div className="min-h-screen py-16 px-4 bg-black text-white transition-colors duration-300">
+    <div className="min-h-screen py-16 px-4 bg-white text-black transition-colors duration-300">
       <div className="max-w-5xl mx-auto">
-        <div className="mb-20">
+        <RevealWrapper className="mb-20" direction="up" delay={0.1}>
           <div className="flex flex-col lg:flex-row items-start gap-12">
             <div className="flex-1">
               <h2 className="text-4xl font-light mb-8">
@@ -40,7 +41,7 @@ const About = () => {
                 <div className="w-20 h-0.5 bg-blue-400 mt-2"></div>
               </h2>
 
-              <div className="space-y-6 text-lg leading-relaxed text-gray-300">
+              <div className="space-y-6 text-lg leading-relaxed text-gray-700">
                 <p>
                   I&apos;m a{" "}
                   <span className="font-medium text-blue-400">
@@ -79,9 +80,9 @@ const About = () => {
               </div>
             </div>
           </div>
-        </div>
+        </RevealWrapper>
 
-        <div className="font-merriweather">
+        <RevealWrapper className="font-merriweather" direction="up" delay={0.2}>
           <h2 className="text-4xl font-light mb-12">
             <span className="text-blue-400">/</span> experience
             <div className="w-20 h-0.5 bg-blue-400 mt-2"></div>
@@ -94,11 +95,10 @@ const About = () => {
                   <button
                     key={company}
                     onClick={() => setSelectedExperience(company)}
-                    className={`w-full text-left px-4 py-3 text-sm font-medium transition-all duration-200 border-l-2 ${
-                      selectedExperience === company
-                        ? "border-blue-400 text-blue-400"
-                        : "border-gray-700 text-gray-400 hover:text-gray-300"
-                    }`}
+                    className={`w-full text-left px-4 py-3 text-sm font-medium transition-all duration-200 border-l-2 ${selectedExperience === company
+                      ? "border-blue-400 text-blue-400"
+                      : "border-gray-200 text-gray-500 hover:text-gray-700"
+                      }`}
                   >
                     {company}
                   </button>
@@ -107,8 +107,8 @@ const About = () => {
             </div>
 
             <div className="flex-1">
-              <div className="rounded-lg p-8 border bg-black border-gray-700 transition-colors duration-300">
-                <h3 className="text-2xl font-medium mb-2 text-white">
+              <div className="rounded-lg p-8 border bg-gray-50 border-gray-200 transition-colors duration-300">
+                <h3 className="text-2xl font-medium mb-2 text-black">
                   {
                     experiences[
                       selectedExperience as keyof typeof experiences
@@ -123,7 +123,7 @@ const About = () => {
                     }
                   </span>
                 </h3>
-                <p className="mb-6 text-sm text-gray-200">
+                <p className="mb-6 text-sm text-gray-600">
                   {
                     experiences[
                       selectedExperience as keyof typeof experiences
@@ -137,14 +137,14 @@ const About = () => {
                   ].description.map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">
                       <span className="text-blue-400 mt-2">▸</span>
-                      <p className="leading-relaxed text-gray-300">{item}</p>
+                      <p className="leading-relaxed text-gray-700">{item}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </RevealWrapper>
       </div>
     </div>
   );
